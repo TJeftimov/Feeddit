@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!--/*/ <th:block th:include="fragments/headFragment :: head"></th:block> /*/-->
 </head>
 <body>
+    <div class="container text-center">
+        <div class="jumbotron">
+            <h1 >Feeddit</h1>
 
+            <div th:if="${param.error}">
+                <label style="color:red">Korisničko ime ili lozinka su nesipravni!</label>
+            </div>
+            <div th:if="${param.logout}">
+                <label>Uspješno ste se odjavili.</label>
+            </div>
+
+            <form th:action="@{/}" method="post">
+                <table class="container-fluid">
+                    <tr>
+                        <td><label>Username: <input type="text" name="username"/></label></td>
+                    </tr>
+                    <tr>
+                        <td><label>Password: <input type="password" name="password"/></label></td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit" class="btn btn-default">Log in</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
