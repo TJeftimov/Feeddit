@@ -51,9 +51,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception
     {
-        httpSecurity.formLogin().loginPage("/").permitAll().and()
-        .authorizeRequests().antMatchers("/console/*").permitAll()
-        .anyRequest().authenticated();
+        httpSecurity.formLogin().loginPage("/login").permitAll().and()
+                .logout().permitAll().and()
+                .authorizeRequests().anyRequest().authenticated();
 
         httpSecurity.csrf().disable();
         httpSecurity.headers().frameOptions().disable();

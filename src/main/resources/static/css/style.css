@@ -11,3 +11,14 @@ td{
 input{
     margin-left: 20px;
 }
+
+.logout{
+    border: none;
+    background: white;
+    color: grey;
+    margin-top: 13px;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 5px;
+}
