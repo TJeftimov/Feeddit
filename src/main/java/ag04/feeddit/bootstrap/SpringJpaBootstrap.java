@@ -43,7 +43,7 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
 
     private void loadArticles()
     {
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 100; i++)
         {
             Article article = new Article();
             article.setTitle("Title" + i);

@@ -2,6 +2,7 @@ package ag04.feeddit.controllers;
 
 import ag04.feeddit.services.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -19,11 +20,11 @@ public class MainController
     }
 
     @RequestMapping("/")
-    ModelAndView mainFeed()
+    ModelAndView mainFeed(Pageable pageable)
     {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView modelAndView = new ModelAndView("mainFeed");
-        modelAndView.addObject("articles", articleService.listAllArticles());
+        modelAndView.addObject("articles", articleService.findAllPageable(pageable));
         return modelAndView;
     }
 }
