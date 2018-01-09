@@ -14,7 +14,7 @@ public class Article
     private Integer version;
 
     private Date dateCreated;
-    private Integer authorId;
+    private Integer userId;
     private String title;
     private String url;
     private String authorName;
@@ -50,14 +50,14 @@ public class Article
         this.dateCreated = dateCreated;
     }
 
-    public Integer getAuthorId()
+    public Integer getUserId()
     {
-        return authorId;
+        return userId;
     }
 
-    public void setAuthorId(Integer authorId)
+    public void setUserId(Integer userId)
     {
-        this.authorId = authorId;
+        this.userId = userId;
     }
 
     public String getTitle()

@@ -49,8 +49,8 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
             article.setTitle("Title" + i);
             article.setUrl("Url" + i);
             article.setVotes(0);
-            article.setAuthorName("user1");
-            article.setAuthorId(1);
+            article.setAuthorName("author" + i);
+            article.setUserId(1);
             article.setDateCreated(new Date());
             articleService.saveArticle(article);
         }
