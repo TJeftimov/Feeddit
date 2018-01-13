@@ -43,11 +43,11 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
 
     private void loadArticles()
     {
-        for(int i = 0; i < 100; i++)
+        for(int i = 0; i < 40; i++)
         {
             Article article = new Article();
-            article.setTitle("Title" + i);
-            article.setUrl("Url" + i);
+            article.setTitle("Placeholder article pointing to google");
+            article.setUrl("http://www.google.com");
             article.setVotes(0);
             article.setAuthorName("author" + i);
             article.setUserId(1);
@@ -60,6 +60,5 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent)
     {
         loadUsers();
-        loadArticles();
     }
 }

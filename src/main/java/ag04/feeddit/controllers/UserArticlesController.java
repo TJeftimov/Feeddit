@@ -5,8 +5,11 @@ import ag04.feeddit.services.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class UserArticlesController
@@ -22,6 +25,15 @@ public class UserArticlesController
     public ModelAndView userArticles(Pageable pageable)
     {
         ModelAndView modelAndView = new ModelAndView("userArticles");
+        modelAndView.addObject("articles", articleService.findAllPageable(pageable));
+        return modelAndView;
+    }
+
+    @RequestMapping("/delete")
+    public ModelAndView delete(Article article, Pageable pageable)
+    {
+        ModelAndView modelAndView = new ModelAndView("userArticles");
+        articleService.deleteArticle(article.getId());
         modelAndView.addObject("articles", articleService.findAllPageable(pageable));
         return modelAndView;
     }

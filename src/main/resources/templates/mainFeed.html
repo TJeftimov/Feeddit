@@ -9,6 +9,9 @@
         <div class="row">
             <h2><a href="#" th:href="@{/addNewArticle}" class="btn btn-default" style="font-size: 30px;">Add new Article</a></h2>
         </div>
+        <div th:if="${articles.totalPages == 0}">
+            <h3>Trenutno nema članaka za prikaz</h3>
+        </div>
         <div class="row">
             <div class="list-group">
                 <div class="list-group-item" th:each="article : ${articles}">
@@ -16,24 +19,26 @@
                         <span class="badge pull-left" th:text="${article.votes}" style="font-size: 25px; padding: 12px;"></span>
                     </div>
                     <div>
-                        <h3 class="list-group-item-heading" th:text="${article.title}"></h3>
+                        <h4><a class="list-group-item-heading" th:text="${article.title}" th:href="${article.url}" target="_blank"></a></h4>
                         <p class="list-group-item-text" th:text="${article.authorName}"></p>
-                        <span class="glyphicon glyphicon-arrow-down pull-right btn btn-default" style="margin-top: -30px;" th:object="${article}" th:action="@{/downvote}" method="post"></span>
+                        <span class="glyphicon glyphicon-arrow-down pull-right btn btn-default" style="margin-top: -30px;" ></span>
                         <span class="glyphicon glyphicon-arrow-up pull-right btn btn-default" style="margin-top:-30px;"></span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" th:if="${articles.totalPages != 0}">
             <ul class="pager">
                 <li class="previous" th:class="${articles.number == 0} ? disabled">
-                    <a class="pageLink" th:href="@{/(pageSize=1, page=${articles.number-1})}">←</a>
+                    <span th:if="${articles.number == 0}">←</span>
+                    <a th:if="${articles.number != 0}" class="pageLink" th:href="@{/(pageSize=1, page=${articles.number-1})}">←</a>
                 </li>
                 <span th:text="${articles.number + 1}"></span>
                 /
                 <span th:text="${articles.totalPages}"></span>
                 <li class="next" th:class="${articles.number + 1  == articles.totalPages} ? disabled">
-                    <a class="pageLink" th:href="@{/(pageSize=1, page=${articles.number + 1})}">→</a>
+                    <span th:if="${articles.number + 1 == articles.totalPages}">→</span>
+                    <a th:if="${articles.number + 1 != articles.totalPages}" class="pageLink" th:href="@{/(pageSize=1, page=${articles.number + 1})}">→</a>
                 </li>
             </ul>
         </div>

@@ -30,7 +30,7 @@ public class MainController
         return modelAndView;
     }
 
-    @RequestMapping(value="downvote", method = RequestMethod.POST)
+    @RequestMapping(value="/downvote", method = RequestMethod.POST)
     public ModelAndView downvote(Article article, Pageable pageable)
     {
         ModelAndView modelAndView = new ModelAndView("mainFeed");
